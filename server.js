@@ -12,6 +12,9 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const colors = require('colors')
+const listenEndpoints = require('express-list-endpoints')
+
+
 
 const bootcampRoutes = require('./routes/BootcampRoutes')
 const userRoutes = require('./routes/userRoutes')
@@ -29,14 +32,14 @@ dotenv.config({
 
 //CREAR OBJETO APLICACIÓN 
 const app = express()
-
+app.use(express.json())
 //EJECUTAR LA CONEXIÓN A DB
-connectDB() 
+// connectDB() 
 
 app.use('/api/v1/bootcamps', bootcampRoutes)
 app.use('/api/v1/users' , userRoutes)
 
-
+console.log(listenEndpoints(app));
 //EJECURAR SERVIDOR DE DESARROLLO DE EXPRESS
 
 app.listen(process.env.PORT, ()=>{

@@ -5,9 +5,7 @@ const router = express.Router()
 //ESTABLECER LAS RUTAS DEL BOOTCAMP
 
 //CREAR RUTA DE PRUEBA
-router.get('/', (res , req)=>{
-    res.send('Ruta usuario funcional')
-})
+
 
 
 //CREAR RUTAS (ENDPOINT, URI) PARA LOS BOOTCAMPS

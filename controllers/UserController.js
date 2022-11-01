@@ -68,7 +68,8 @@ exports.putUser = async(req , res)=>{
 //-----------------------------DELETE PARA BORRAR UN USUARIO-----------------------------//
 exports.deleteUser = async(req,res)=>{
 
-    const deleteUser=await User.destroy({
+    const deleteUser = await User.findByPk(req.params.id)
+    await User.destroy({
         where: {
           id: req.params.id
         }
@@ -80,7 +81,7 @@ exports.deleteUser = async(req,res)=>{
         {   
             "succes" : true,
             "data"   : deleteUser,
-            "message": `Se va a borrar el USUARIO ${req.params.id}`
+            "message": deleteUser.name
         }
     )
 }

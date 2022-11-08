@@ -14,9 +14,66 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
+    name: {
+      type:DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isAlpha: {
+          args: true,
+          msg: "Valores solo válidos en letras"
+        },
+        notEmpty: {
+          args: true,
+          msg: "El campo no debe de quedar vacío"
+        },
+        notNull: {
+          args: true,
+          msg: "El campo no debe de quedar vacío"
+        },
+      }
+    },
+
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    validate:{
+      notEmpty: {
+        args: true,
+        msg: "El campo no debe de quedar vacío"
+      },
+      notNull: {
+        args: true,
+        msg: "El campo no debe de quedar vacío"
+      },
+      isEmail: {
+        args: true,
+        msg: "Debe contener un dominio"
+      } 
+    },
+  },
+
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    validate:{
+      notEmpty: {
+        args: true,
+        msg: "El campo no debe de quedar vacío"
+      },
+      notNull: {
+        args: true,
+        msg: "El campo no debe de quedar vacío"
+      },
+      len: {
+        args: [8,100],
+        msg: "El campo debe tener mínimo 8 carácteres"
+      },
+    }
+  }
+
   }, {
     sequelize,
     modelName: 'User',

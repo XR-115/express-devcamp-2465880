@@ -18,10 +18,12 @@ const listenEndpoints = require('express-list-endpoints')
 
 const bootcampRoutes = require('./routes/BootcampRoutes')
 const userRoutes = require('./routes/userRoutes')
-
+const ReviewsRoutes = require('./routes/ReviewsRoutes')
+const ReviewsCourses = require('./routes/Courses')
 //DEPENDENCIA A CONEXIÓN DB
 
 const connectDB = require('./config/db')
+
 
 //ESTABLECER ARCHIVO DE CONFIGURACIÓN 
 //CON VARIABLES DE ENTORNO
@@ -37,6 +39,8 @@ app.use(express.json())
 // connectDB() 
 app.use('/api/v1/bootcamps', bootcampRoutes)
 app.use('/api/v1/users' , userRoutes)
+app.use('/api/v1/reviews' , ReviewsRoutes)
+app.use('/api/v1/courses' , ReviewsCourses)
 
 console.log(listenEndpoints(app));
 //EJECURAR SERVIDOR DE DESARROLLO DE EXPRESS

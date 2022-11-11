@@ -14,7 +14,7 @@ module.exports = {
               {
                 name: 'John Pablo',
                 email: 'juanPaBlO@misena.edu.co',
-                password: '4321'
+                passwor: '4321'
               }
     ], 
     {});
